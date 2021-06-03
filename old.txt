@@ -1,0 +1,53 @@
+#from skimage.measure import structural_similarity as ssim
+#from skimage.metrics import structural_similarity as ssim
+#import matplotlib.pyplot as plt
+#import numpy as np
+#pip install --upgrade skimage
+#from skimage.measure import compare_ssim
+import skimage.util
+from skimage import measure
+#from skimage.measure import compare_ssim
+#s= skimage.util.compare_images()
+import argparse
+import imutils
+import cv2
+import cv2
+
+#ap = argparse.ArgumentParser()
+#ap.add_argument("-f", "--first", required=True, help="first input image")
+#ap.add_argument("-s", "--second", required=True, help="second")
+#args = vars(ap.parse_args())
+
+# import module
+from PIL import Image, ImageChops
+# assign images
+org = Image.open("med1.png")
+fake = Image.open("med2.png")
+
+# finding difference
+diff = ImageChops.difference(org,fake)
+fake.show()
+# showing the difference
+diff.show()
+
+width = fake.width
+height = fake.height
+mode = 'RGB'
+size = (width, height)
+color = (0, 0, 0)
+mirror = Image.new(mode, size, color)
+for pixel in mirror:
+    print('lol')
+#blackscreening
+for pixel in diff:
+   # average = (pixel.red + pixel.green + pixel.blue) // 3
+    # See if this pixel is "sufficiently" red
+    if (pixel.red!=0 , pixel.blue!=0 , pixel.green!=0):
+        # If so, we get the corresponding pixel from the
+        # back image and overwrite the pixel in
+        # the main image with that from the back image.
+        x = pixel.x
+        y = pixel.y
+        fake.set_pixel(x, y, diff.get_pixel(x, y))
+fake.show()
+
