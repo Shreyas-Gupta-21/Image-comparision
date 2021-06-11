@@ -51,10 +51,6 @@ app.run()
 
 
 
-
-
-
-
 def kaam_karo(input_name):
     # before = plt.imread(input_name, cv2.IMREAD_GRAYSCALE)
     # after = plt.imread("C:\\Users\\AAVAIG\\Documents\\webd\\hack-the-crisis\\api\\med2.jpeg", cv2.IMREAD_GRAYSCALE)
