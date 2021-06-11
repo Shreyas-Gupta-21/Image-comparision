@@ -1,13 +1,10 @@
 #from skimage.measure import structural_similarity as ssim
 from skimage.metrics import structural_similarity as ssim
-#import matplotlib.pyplot as plt
 import numpy as np
 #pip install --upgrade skimage
 #from skimage.measure import compare_ssim
 import skimage.util
 from skimage import measure
-#from skimage.measure import compare_ssim
-#s= skimage.util.compare_images()
 #import argparse
 #import imutils
 import cv2
@@ -35,8 +32,6 @@ app.config['DEBUG'] = True
 
 
 
-
-
 @app.route('/get_results',methods = ['POST'])
 def get_results():
     patient_id = request.args['id']
@@ -50,7 +45,6 @@ def get_image(patient_id):
     kaam_karo(image_name)
     # image = cv2.imread(image_name)
     return preprocess_image(image)
-
 
 app.run()
 
